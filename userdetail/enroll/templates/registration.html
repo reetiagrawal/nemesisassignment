@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp Form</title>
+</head>
+<body>
+{% if register %}
+<h1>Registration Successful</h1>
+
+{% else %}
+<form action="{% url 'reg'%}" method="post">
+    {% csrf_token %}
+    {{signup_form.as_p}}
+    {{info_form.as_p}}
+    <button type="submit">SignUp</button>
+</form>
+
+{% endif %}
+
+</body>
+</html>

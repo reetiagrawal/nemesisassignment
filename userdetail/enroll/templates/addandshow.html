@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD AND SHOW</title>
+</head>
+<body>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Add">
+</form>
+<h4>Show List</h4>
+{% if stu %}
+<h4>Table Data</h4>
+
+<table class="heading1">
+     <thead>
+     <tr>
+         <th>Id</th>
+         <th>Name</th>
+         <th>Email</th>
+
+         <th>Action</th>
+     </tr>
+     </thead>
+     <tbody>
+      {% for st in stu %}
+     <tr>
+         <td>{{st.id}}</td>
+         <td>{{st.username}}</td>
+         <td>{{st.email}}</td>
+
+         <td>
+
+             <form action="{% url 'deletedata' st.id %}" method="POST">
+             {% csrf_token%}
+                 <input type="submit" value="Delete">
+             </form>
+         </td>
+         <td>
+
+             <form action="{% url 'editdata' st.id %}" method="POST">
+             {% csrf_token%}    <input type="submit" value="Update">
+             </form>
+         </td>
+     </tr>
+       {% endfor %}
+     </tbody>
+ </table>
+{% else %}
+<h4>No</h4>
+{% endif %}
+</body>
+</html>

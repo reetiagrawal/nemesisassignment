@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Form</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Update">
+    <a href="{% url 'addandshow' %}">Back to home</a>
+
+</form>
+
+</body>
+</html>
